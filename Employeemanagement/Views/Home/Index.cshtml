@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Employeemanagement.Models.Employee>
+
+@{ 
+    ViewBag.Title = "Employee list";
+
+}
+  
+<div class="row ">
+
+    @foreach (var employee in Model)
+
+    {
+        var photopath = "/images/" + (string.IsNullOrEmpty(employee.Photopath) ? "1000_F_238058282_2vuQ0T9sy0wvcbx9ycktTUqPaT0LGgT9.jpg" : employee.Photopath) ;
+
+        <div class="col-3   card   m-3">
+
+            <div class="card-header">
+
+
+                <h3>@employee.Name</h3>
+
+
+            </div>
+
+            <img src="@photopath" class="card-img-top  img-card" alt="...">
+
+
+            <div class="card-footer text-center">
+
+                <a href="/home/details/@employee.Id" class="btn btn-primary">Views</a>
+                <a asp-controller="Home"asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a>
+                <a class="btn btn-danger">Delete</a>
+            </div>
+
+
+
+        </div>
+
+
+
+     }
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
